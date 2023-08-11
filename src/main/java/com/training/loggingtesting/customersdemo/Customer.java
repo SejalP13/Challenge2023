@@ -2,13 +2,12 @@ package com.training.loggingtesting.customersdemo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "customer")
 public class Customer {
 
     @Id
-    private int cust_id;
+    private String cust_id;
     private String firstName;
     private String lastName;
 
@@ -25,11 +24,11 @@ public class Customer {
 //    @Field("Revenue")
 //    private double sales;
 
-    public int getId() {
+    public String getId() {
         return cust_id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.cust_id = id;
     }
 
