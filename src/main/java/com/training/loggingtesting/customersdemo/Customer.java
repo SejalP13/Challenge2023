@@ -1,87 +1,133 @@
-package com.training.loggingtesting.ordersdemo;
+package com.training.loggingtesting.customersdemo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document("customerorders")
-public class Order {
+@Document(collection = "customer")
+public class Customer {
 
     @Id
-    private String id;
-    //customer,product,year,country,quantity,price,sales
-    private String customer;
-    private String product;
-    @Field("Country")
-    private String country;
-    private int year;
-    private double price;
-    private int quantity;
+    private int cust_id;
+    private String firstName;
+    private String lastName;
 
-    @Field("Revenue")
-    private double sales;
+    //@Field("Country")
+    private String gender;
+    private String dob;
+    private String job;
 
-    public String getId() {
-        return id;
+
+//    private int year;
+//    private double price;
+//    private int quantity;
+
+//    @Field("Revenue")
+//    private double sales;
+
+    public int getId() {
+        return cust_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(int id) {
+        this.cust_id = id;
     }
 
-    public String getCustomer() {
-        return customer;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getProduct() {
-        return product;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getCountry() {
-        return country;
+    public String getGender() {
+        return gender;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public int getYear() {
-        return year;
+    public String getDob() {
+        return dob;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public double getPrice() {
-        return price;
+    public String getJob() {
+        return job;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setJob(String job) {
+        this.job = job;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
-    public double getSales() {
-        return sales;
-    }
-
-    public void setSales(double sales) {
-        this.sales = sales;
-    }
+//    public String getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(String customer) {
+//        this.customer = customer;
+//    }
+//
+//    public String getProduct() {
+//        return product;
+//    }
+//
+//    public void setProduct(String product) {
+//        this.product = product;
+//    }
+//
+//    public String getCountry() {
+//        return country;
+//    }
+//
+//    public void setCountry(String country) {
+//        this.country = country;
+//    }
+//
+//    public int getYear() {
+//        return year;
+//    }
+//
+//    public void setYear(int year) {
+//        this.year = year;
+//    }
+//
+//    public double getPrice() {
+//        return price;
+//    }
+//
+//    public void setPrice(double price) {
+//        this.price = price;
+//    }
+//
+//    public int getQuantity() {
+//        return quantity;
+//    }
+//
+//    public void setQuantity(int quantity) {
+//        this.quantity = quantity;
+//    }
+//
+//    public double getSales() {
+//        return sales;
+//    }
+//
+//    public void setSales(double sales) {
+//        this.sales = sales;
+//    }
 }
