@@ -15,79 +15,49 @@ public class CustomerController {
 
     @Autowired
     private CustomerService service;
-
-    @GetMapping("/countrysales")
-    public ResponseEntity<List<CountrySales>> getCountrySales(){
-
-        return ResponseEntity.ok(service.getCountrySales());
-
+    
+ @PostMapping("/customer")
+    public Customer addCustomer(@Valid @RequestBody Customer user) {
+        return service.existsById(user);
+        Customer savedCustomer = service.save(user);
+        return savedCustomer;
     }
-
-    @GetMapping
-    public ResponseEntity<List<Customer>>  getAll(){
-        return ResponseEntity.ok(service.getAllOrders());
-
-    }
-
-    @PostMapping("/users")
-    public Customer saveUserDetails(@Valid @RequestBody Customer user) {
-        return service.save(user);
-    }
-    /**
-     * API for find all user details.
-     * @return
-     */
-    @GetMapping("/users")
-    public List<Customer> getUserDetails() {
+    
+     @GetMapping("/customer")
+    public List<Customer> displayCustomer() {
         return service.findAll();
     }
-    /**
-     * API for find user details by firstname
-     * @param firstname
-     * @return
-     */
-    @GetMapping("/users/{firstname}")
-    public Customer getUserDetailsByFirstName(@PathVariable(value = "firstname") String firstname) {
-        return service.findByFirstname(firstname)
-                .orElseThrow(() -> new CustomerNotFoundException("User", "firstname", firstname));
+    
+@GetMapping("/customer/{Id}")
+    public Customer getCustomerById(@PathVariable(value = "Id") String cust_id) {
+        return service.findById(cust_id)
+                .orElseThrow(() -> new CustomerNotFoundException("Customer", "Id", cust_id));
     }
-    /**
-     * API for update user address and age by firstname
-     * @param firstname
-     * @param userDetails
-     * @return
-     */
-    @PutMapping("/users/{firstname}")
-    public Customer updateUser(@PathVariable(value = "firstname") String firstname,
-                           @Valid @RequestBody Customer userDetails) {
 
-        Customer user = service.findByFirstname(firstname)
-                .orElseThrow(() -> new CustomerNotFoundException("User", "firstname", firstname));
-
-        user.setAddress(userDetails.getAddress());
-        user.setAge(userDetails.getAge());
-
-        Customer updatedUser = service.save(user);
-        return updatedUser;
+     @GetMapping("/customer/{gender}")
+    public Customer getAllCustomersByGender(@PathVariable(value = "gender") String gender) {
+        return service.findByGender(gender)
+                .orElseThrow(() -> new CustomerNotFoundException("Customer", "gender", gender));
     }
+ 
     /**
-     * API for delete user details by firstname
-     * @param firstname
+     * API for delete user details by Id
+     * @param Id
      * @return
      */
-    @DeleteMapping("/users/{firstname}")
-    public ResponseEntity<?> deleteIUser(@PathVariable(value = "firstname") String firstname) {
-        Customer user = service.findByFirstname(firstname)
-                .orElseThrow(() -> new CustomerNotFoundException("Items", "firstname", firstname));
+   @DeleteMapping("/customer/{Id}")
+    public ResponseEntity<?> deleteCustomer(@PathVariable(value = "Id") String cust_id) {
+        Customer user = service.deleteCustomer(cust_id)
+                .orElseThrow(() -> new CustomerNotFoundException("Customer", "Id", cust_id));
 
-        service.delete(user);
+        service.deleteCustomer(Id);
 
         return ResponseEntity.ok().build();
     }
 
 }
 
-//
+
 //@RestController
 //@RequestMapping("/api")
 //public class UserController {
