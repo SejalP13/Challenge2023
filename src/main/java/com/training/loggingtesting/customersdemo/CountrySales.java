@@ -1,4 +1,4 @@
-package com.training.loggingtesting.ordersdemo;
+package com.training.loggingtesting.customersdemo;
 
 import org.springframework.stereotype.Component;
 

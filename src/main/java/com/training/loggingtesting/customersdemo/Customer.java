@@ -12,7 +12,17 @@ public class Customer {
     private String firstName;
     private String lastName;
 
-    //@Field("Country")
+    @Field("Country")
+    private String country;
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     private String gender;
     private String dob;
     private String job;
